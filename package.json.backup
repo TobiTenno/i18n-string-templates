@@ -8,7 +8,7 @@
     "coverage": "npm test && c8 report --reporter=text-lcov | coveralls",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
-    "prepublishOnly": "npm run build:types; npm_config_yes=true npx clean-package",
+    "prepublishOnly": "npm run build:types",
     "test": "c8 mocha"
   },
   "repository": {
