@@ -22,9 +22,9 @@
   "author": "TobiTenno <tobiah@pm.me>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/TobiTenno/i18n-string-template/issues"
+    "url": "https://github.com/TobiTenno/i18n-string-templates/issues"
   },
-  "homepage": "https://github.com/TobiTenno/i18n-string-template#readme",
+  "homepage": "https://github.com/TobiTenno/i18n-string-templates#readme",
   "eslintIgnore": [],
   "eslintConfig": {
     "extends": "airbnb-base",
