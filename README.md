@@ -49,13 +49,22 @@ const locales = {
 let i18n = use(locales, 'en');
 console.log(i18n`sample`); // outputs: sample
 console.log(i18n`${'joe'} debates ${'tom'}`); // outputs joe debattes tom
-console.log(i18n`john needs ${241/12} units of blood`) //outputs john needs 20.083333333333332 units of blood
+console.log(i18n`john needs ${241/12}:n(3) units of blood`) //outputs john needs 20.083 units of blood
 
 i18n = use(localse, 'zh');
 console.log(i18n`sample`); // outputs: 样本
 console.log(i18n`${'约翰'} debates ${'刘易斯'}`); // outputs 约翰与刘易斯辩论
-console.log(i18n`john needs ${241/12} units of blood`) //outputs john needs 20.083333333333332 units of blood
+console.log(i18n`john needs ${241/12}:n(3) units of blood`) //outputs john needs 20.083 units of blood
 ```
+
+## Specifying "types"
+
+We include a rudimentary "type" forcing syntax for forcing a type on a template parameter.
+
+| Suffix | Type |
+| :---: | :---: |
+|`:s` | String |
+|`:n(x)` | Number |
 
 ## Requirements
 

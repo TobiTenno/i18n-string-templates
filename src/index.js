@@ -45,16 +45,24 @@ class I18n {
   #localizers;
 
   /**
+   * Object of warnings
+   * @type {Object}
+   * @property {Object<string, string>} untranslated untranslated strings
+   */
+  #warnings;
+
+  /**
    * Make an I18n instance
    * @param {Object<string, Object<string, string>>} locales locale mapping
    * @param {string} locale locale
+   * @param {Object} warnings warnings storage object
    */
-  constructor(locales, locale) {
+  constructor(locales, locale, { warnings } = { warnings: { untranslated: {} } }) {
     if (!Object.keys(locales || {}).length) throw new TypeError('locales is required');
     this.#locales = locales;
-    this.#locale = locale || 'en';
+    this.#locale = locale;
     this.#bundle = this.#locales[this.#locale];
-
+    this.#warnings = warnings;
     this.#localizers = {
       s /* string */: v => v.toLocaleString(this.#locale),
       n /* number */: (v, fractionalDigits) => (
@@ -81,6 +89,7 @@ class I18n {
       const localizedValues = values.map((v, i) => this.#localize(v, typeInfoForValues[i]));
       return buildMessage(translationString, ...localizedValues);
     }
+    this.#warnings.untranslated[translationKey] = translationKey;
     return buildMessage(translationKey, ...values);
   }
 
@@ -100,9 +109,10 @@ class I18n {
  * Make a translator with provided locale mapping, and an instance using the desired locale
  * @param {Object<string, Object<string, string>>} locales locale mapping
  * @param {string} locale locale
+ * @param {Object} [options] additional options to pass to the translator
  * @returns {function} a string template function
  */
-export default function use(locales, locale) {
-  const i18n = new I18n(locales, locale);
+export default function use(locales, locale = 'en', options) {
+  const i18n = new I18n(locales, locale, options);
   return i18n.translate.bind(i18n);
 }
