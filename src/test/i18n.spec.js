@@ -35,7 +35,7 @@ describe('use', () => {
       (i18n`sample`).should.be.a('string').and.eq('sample');
       (i18n`${'grineer'} debates ${'corpus'}`).should.eq('grineer debattes corpus');
     });
-    it ('should support non-English', () => {
+    it('should support non-English', () => {
       const zh = use(mockLocales, 'zh');
       (zh`sample`).should.be.a('string').and.eq('样本');
       (zh`${'grineer'} debates ${'corpus'}`).should.eq('grineer与corpus辩论');
