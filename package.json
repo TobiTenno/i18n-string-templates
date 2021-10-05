@@ -5,11 +5,11 @@
   "main": "src/index.js",
   "scripts": {
     "build:types": "tsc -p tsconfig.declaration.json",
-    "coverage": "npm test && nyc report --reporter=text-lcov | coveralls",
+    "coverage": "npm test && c8 report --reporter=text-lcov | coveralls",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
     "prepublishOnly": "npm run build:types",
-    "test": "nyc mocha"
+    "test": "c8 mocha"
   },
   "repository": {
     "type": "git",
@@ -102,29 +102,24 @@
     "@babel/plugin-proposal-class-properties": "^7.14.5",
     "@babel/plugin-proposal-private-methods": "^7.14.5",
     "@babel/preset-env": "^7.15.6",
+    "c8": "^7.9.0",
     "chai": "^4.3.4",
     "coveralls": "^3.1.1",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.2",
-    "esm": "^3.2.25",
     "mocha": "^9.1.2",
-    "nyc": "^15.1.0",
     "typescript": "^4.4.3"
   },
   "mocha": {
     "exit": true,
-    "spec": "src/test/**/*.spec.js",
-    "require": [
-      "esm"
-    ]
+    "spec": "src/test/**/*.spec.js"
   },
-  "nyc": {
+  "c8": {
     "reporter": [
       "lcov",
       "text"
     ],
-    "skip-full": true,
     "include": [
       "src/index.js"
     ],
