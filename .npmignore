@@ -32,4 +32,7 @@ build/Release
 # Compiled docs
 docs/
 
-test/*
+.github/
+src/test/
+.gitattributes
+tsconfig.declaration.json
