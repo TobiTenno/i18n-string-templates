@@ -1,0 +1,16 @@
+{
+  "include": [ "src/index.js" ],
+  "exclude": [
+    "test/**/*.*",
+    "types/**/*.*",
+    "coverage/**/*.*"
+  ],
+  "compilerOptions": {
+    "outDir": "./types",
+    "declaration": true,
+    "noEmit": false,
+    "allowJs": true,
+    "emitDeclarationOnly": true,
+    "lib": ["es6"]
+  }
+}

@@ -1,0 +1,26 @@
+{
+	"env": {
+		"mocha": true
+	},
+	"rules": {
+		"prefer-arrow-callback": "off",
+		"func-names": "off",
+		"no-new": "off",
+		"no-unused-expressions": "off",
+		"valid-jsdoc": "off",
+		"import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}],
+		"global-require": "off",
+		"max-len": "off"
+	},
+	"extends": "airbnb-base",
+	"parser": "@babel/eslint-parser",
+	"parserOptions": {
+		"sourceType": "module",
+		"babelOptions": {
+			"plugins": [
+				"@babel/plugin-proposal-class-properties",
+				"@babel/plugin-proposal-private-methods"
+			]
+		}
+	}
+}
