@@ -36,3 +36,4 @@ docs/
 src/test/
 .gitattributes
 tsconfig.declaration.json
+package.json.backup
