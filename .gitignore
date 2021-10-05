@@ -36,3 +36,6 @@ node_modules
 # WebStorm files
 .idea
 types/
+
+# Some other generated files
+package.json.backup
