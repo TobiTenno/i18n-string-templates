@@ -38,14 +38,23 @@ import use from 'i18n-string-templates';
 const locales = {
   en: {
     sample: 'sample',
-    '{0} debates {1}': '{}
-  }
+    '{0} debates {1}': '{0} debattes {1}',
+  },
+  zh: {
+    sample: '样本',
+    '{0} debates {1}': '{0}与{1}辩论',
+  },
 };
 
-const i18n = use(locales, 'en');
+let i18n = use(locales, 'en');
 console.log(i18n`sample`); // outputs: sample
-console.log(i18n`${'joe'} debates ${'tom'}`); // outputs joe debates tom
-console.log(i18n``)
+console.log(i18n`${'joe'} debates ${'tom'}`); // outputs joe debattes tom
+console.log(i18n`john needs ${241/12} units of blood`) //outputs john needs 20.083333333333332 units of blood
+
+i18n = use(localse, 'zh');
+console.log(i18n`sample`); // outputs: 样本
+console.log(i18n`${'约翰'} debates ${'刘易斯'}`); // outputs 约翰与刘易斯辩论
+console.log(i18n`john needs ${241/12} units of blood`) //outputs john needs 20.083333333333332 units of blood
 ```
 
 ## Requirements
@@ -58,3 +67,4 @@ console.log(i18n``)
 [![Actions](https://github.com/TobiTenno/i18n-string-templates/actions/workflows/ci.yaml/badge.svg)](https://github.com/TobiTenno/i18n-string-templates/actions/workflows/ci.yaml)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![Coverage Status](https://coveralls.io/repos/github/TobiTenno/i18n-string-templates/badge.svg?branch=main)](https://coveralls.io/github/TobiTenno/i18n-string-templates?branch=main)
+[![npm version](https://badge.fury.io/js/i18n-string-templates.svg)](https://badge.fury.io/js/i18n-string-templates)

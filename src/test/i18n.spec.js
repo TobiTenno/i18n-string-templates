@@ -7,7 +7,11 @@ chai.should();
 const mockLocales = {
   en: {
     sample: 'sample',
-    '{0} against {1}': '{0} against {1}',
+    '{0} debates {1}': '{0} debattes {1}',
+  },
+  zh: {
+    sample: '样本',
+    '{0} debates {1}': '{0}与{1}辩论',
   },
 };
 
@@ -29,7 +33,13 @@ describe('use', () => {
     const i18n = use(mockLocales, 'en');
     it('should return translated value when present', () => {
       (i18n`sample`).should.be.a('string').and.eq('sample');
-      (i18n`${'grineer'} against ${'corpus'}`).should.eq('grineer against corpus');
+      (i18n`${'grineer'} debates ${'corpus'}`).should.eq('grineer debattes corpus');
+    });
+    it('should support non-English', () => {
+      const zh = use(mockLocales, 'zh');
+      (zh`sample`).should.be.a('string').and.eq('样本');
+      (zh`${'grineer'} debates ${'corpus'}`).should.eq('grineer与corpus辩论');
+      (zh`non-extant`).should.be.a('string').and.eq('non-extant');
     });
     it('should return passed value when not present', () => {
       (i18n`non-extant`).should.be.a('string').and.eq('non-extant');
