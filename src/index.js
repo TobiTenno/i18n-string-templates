@@ -57,7 +57,8 @@ class I18n {
    * @param {string} locale locale
    * @param {Object} warnings warnings storage object
    */
-  constructor(locales, locale, { warnings } = { warnings: { untranslated: {} } }) {
+  constructor(locales, locale, { warnings = { untranslated: {} } }
+  = { warnings: { untranslated: {} } }) {
     if (!Object.keys(locales || {}).length) throw new TypeError('locales is required');
     this.#locales = locales;
     this.#locale = locale;
@@ -112,7 +113,7 @@ class I18n {
  * @param {Object} [options] additional options to pass to the translator
  * @returns {function} a string template function
  */
-export default function use(locales, locale = 'en', options) {
+export default function use(locales, locale = 'en', options = {}) {
   const i18n = new I18n(locales, locale, options);
   return i18n.translate.bind(i18n);
 }
