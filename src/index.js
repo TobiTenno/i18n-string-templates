@@ -57,7 +57,8 @@ class I18n {
    * @param {string} locale locale
    * @param {Object} warnings warnings storage object
    */
-  constructor(locales, locale, { warnings } = { warnings: { untranslated: {} } }) {
+  constructor(locales, locale, { warnings = { untranslated: {} } }
+  = { warnings: { untranslated: {} } }) {
     if (!Object.keys(locales || {}).length) throw new TypeError('locales is required');
     this.#locales = locales;
     this.#locale = locale;
