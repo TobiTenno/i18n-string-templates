@@ -112,7 +112,7 @@ class I18n {
  * @param {Object} [options] additional options to pass to the translator
  * @returns {function} a string template function
  */
-export default function use(locales, locale = 'en', options) {
+export default function use(locales, locale = 'en', options = {}) {
   const i18n = new I18n(locales, locale, options);
   return i18n.translate.bind(i18n);
 }
