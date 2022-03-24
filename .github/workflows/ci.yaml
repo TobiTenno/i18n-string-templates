@@ -11,16 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [15.x]
-
+        node-version: [16]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
       - name: Run linters
         run: npm run lint
   test:
@@ -29,14 +28,14 @@ jobs:
     needs: lint
     strategy:
       matrix:
-        node-version: [14.x, 15.x, 16.x]
+        node-version: [12, 14, 16, 'lts/*']
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install
+      - run: npm ci
       - run: npm test
         env:
           CI: true
@@ -47,14 +46,14 @@ jobs:
     needs: lint
     strategy:
       matrix:
-        node-version: [15.x]
+        node-version: [16]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install
+      - run: npm ci
       - run: npm test
         env:
           CI: true
@@ -69,15 +68,16 @@ jobs:
     needs: [lint, test, coverage]
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [16]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Semantic Release
-        uses: cycjimmy/semantic-release-action@v2.5.0
+        uses: cycjimmy/semantic-release-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
+          semantic_version: 17
           branches: |
             ['main']
