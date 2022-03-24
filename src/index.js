@@ -1,3 +1,36 @@
+/**
+ * @typedef {string} Locale locale identifier, typically following ISO 639-1
+ */
+/**
+ * Key for an I18n matching pair
+ * @typedef {string} I18nPairKey key for the matching pair, following the format of
+ *  {x} for replacers, x being the index in the string
+ *  {x}:s to force the replaced token to be treated as a string
+ *  {x}:n to force the replaced token to be treated as a number
+ */
+/**
+ * Locale for use with all of th
+ * @typedef {Object<I18nPairKey, string>} I18nPairs
+ */
+/**
+ * Bundle of all locale values
+ * @typedef {Object<Locale, I18nPairs>} I18nBundle
+ */
+/**
+ * Warnings list for i18ns
+ * @typedef {Object} I18nWarnings
+ * @property {I18nPairs} untranslated object map of strings that are untranslated
+ */
+/**
+ * Options object for the I18n constructor
+ * @typedef {Object} I18nOptions
+ * @property {I18nWarnings} warnings
+ */
+
+/**
+ * Regex for extracting type information for a replacement
+ * @type {RegExp}
+ */
 const typeInfoRegex = /^:([a-z])(\((.+)\))?/;
 // e.g. I18n._buildKey(['', ' has ', ':c in the']) == '{0} has {1} in the bank'
 const buildKey = (strings) => {
@@ -25,17 +58,17 @@ const extractTypeInfo = (str) => {
 class I18n {
   /**
    * Locale map
-   * @type {Object<string, Object<string, string>>}
+   * @type {I18nBundle}
    */
   #locales;
   /**
    * Locale string
-   * @type {string}
+   * @type {Locale}
    */
   #locale;
   /**
    * Locale bundle
-   * @type {Object<string, string>}
+   * @type {I18nPairs}
    */
   #bundle;
   /**
@@ -43,7 +76,6 @@ class I18n {
    * @type {Object<string, function>}
    */
   #localizers;
-
   /**
    * Object of warnings
    * @type {Object}
@@ -53,9 +85,9 @@ class I18n {
 
   /**
    * Make an I18n instance
-   * @param {Object<string, Object<string, string>>} locales locale mapping
-   * @param {string} locale locale
-   * @param {Object} warnings warnings storage object
+   * @param {I18nBundle} locales locale mapping
+   * @param {Locale} locale locale
+   * @param {I18nWarnings} warnings warnings storage object
    */
   constructor(locales, locale, { warnings = { untranslated: {} } }
   = { warnings: { untranslated: {} } }) {
@@ -64,6 +96,9 @@ class I18n {
     this.#locale = locale;
     this.#bundle = this.#locales[this.#locale];
     this.#warnings = warnings;
+    /**
+     * @type {Object<string, function>}
+     */
     this.#localizers = {
       s /* string */: v => v.toLocaleString(this.#locale),
       n /* number */: (v, fractionalDigits) => (
@@ -79,7 +114,7 @@ class I18n {
    * Translate a template string to values, a string template function
    * @param {Array<string>} strings in-between bits
    * @param {Array<string>} values parts to localise
-   * @returns {string}
+   * @returns {string} a translated string
    */
   translate(strings, ...values) {
     const translationKey = buildKey(strings);
@@ -108,10 +143,10 @@ class I18n {
 
 /**
  * Make a translator with provided locale mapping, and an instance using the desired locale
- * @param {Object<string, Object<string, string>>} locales locale mapping
- * @param {string} locale locale
- * @param {Object} [options] additional options to pass to the translator
- * @returns {function} a string template function
+ * @param {I18nBundle} locales locale mapping bundle
+ * @param {Locale} locale locale to be used for this instance, defaults to 'en'
+ * @param {I18nOptions} [options] additional options to pass to the translator
+ * @returns {function} a tagged template literal function
  */
 export default function use(locales, locale = 'en', options = {}) {
   const i18n = new I18n(locales, locale, options);
