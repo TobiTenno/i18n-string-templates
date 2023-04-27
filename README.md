@@ -28,8 +28,8 @@ Some goals:
 - Keeping your experience consistent. As part of this, I leverage [semantic-release](https://github.com/semantic-release/semantic-release)
 
 Some things I want to add:
-~~- adding a warning.json or some sort of shareable output for strings that have been run through the system that haven't been translated~~
-~~- Even more coverage~~
+- ~~adding a warning.json or some sort of shareable output for strings that have been run through the system that haven't been translated~~
+- ~~Even more coverage~~
 - Anything the community needs to make your i18n experience easier!
 
 Some examples are in the `src/test/i18n.spec.js` file.
