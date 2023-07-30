@@ -3,6 +3,7 @@
   "version": "0.0.0-dev",
   "description": "Simple i18n handler using string templates and JSON.",
   "main": "src/index.js",
+  "types": "types/index.d.ts",
   "scripts": {
     "build:types": "tsc -p tsconfig.declaration.json",
     "coverage": "npm test && c8 report --reporter=text-lcov | coveralls",
