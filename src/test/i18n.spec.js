@@ -1,4 +1,4 @@
-import chai from 'chai';
+import * as chai from 'chai';
 // eslint-disable-next-line import/no-named-as-default,import/no-named-as-default-member,import/extensions
 import use from '../index.js';
 
