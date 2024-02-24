@@ -8,15 +8,12 @@ jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version-file: '.nvmrc'
       - name: Install Dependencies
         run: npm ci
       - name: Run linters
@@ -27,7 +24,7 @@ jobs:
     needs: lint
     strategy:
       matrix:
-        node-version: [14, 16, 'lts/*']
+        node-version: ['lts/hydrogen', 'lts/iron', 'lts/*']
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -43,15 +40,12 @@ jobs:
     name: Coverage
     runs-on: ubuntu-latest
     needs: lint
-    strategy:
-      matrix:
-        node-version: [16]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version-file: '.nvmrc'
       - run: npm ci
       - run: npm test
         env:
