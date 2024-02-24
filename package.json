@@ -4,9 +4,15 @@
   "description": "Simple i18n handler using string templates and JSON.",
   "main": "src/index.js",
   "types": "types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "types": "./types/index.d.ts"
+    }
+  },
   "scripts": {
     "build:types": "tsc -p tsconfig.declaration.json",
-    "coverage": "npm test && c8 report --reporter=text-lcov | coveralls",
+    "coverage": "npm test && c8 report --reporter=text-lcov | npx coveralls",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
     "prepublishOnly": "npm run build:types; npm_config_yes=true npx clean-package",
@@ -31,13 +37,7 @@
     "extends": "airbnb-base",
     "parser": "@babel/eslint-parser",
     "parserOptions": {
-      "sourceType": "module",
-      "babelOptions": {
-        "plugins": [
-          "@babel/plugin-proposal-class-properties",
-          "@babel/plugin-proposal-private-methods"
-        ]
-      }
+      "sourceType": "module"
     },
     "rules": {
       "valid-jsdoc": [
@@ -93,24 +93,23 @@
       "@babel/preset-env"
     ],
     "plugins": [
-      "@babel/plugin-proposal-class-properties",
-      "@babel/plugin-proposal-private-methods"
+      "@babel/plugin-transform-class-properties",
+      "@babel/plugin-transform-private-methods"
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.15.5",
-    "@babel/eslint-parser": "^7.15.7",
-    "@babel/plugin-proposal-class-properties": "^7.14.5",
-    "@babel/plugin-proposal-private-methods": "^7.14.5",
-    "@babel/preset-env": "^7.15.6",
-    "c8": "^9.0.0",
+    "@babel/core": "^7.23.9",
+    "@babel/eslint-parser": "^7.23.10",
+    "@babel/plugin-transform-class-properties": "^7.23.3",
+    "@babel/plugin-transform-private-methods": "^7.23.3",
+    "@babel/preset-env": "^7.23.9",
+    "c8": "^9.1.0",
     "chai": "^5.0.0",
-    "coveralls": "^3.1.1",
-    "eslint": "^8.0.1",
+    "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.24.2",
-    "mocha": "^10.0.0",
-    "typescript": "^5.0.2"
+    "eslint-plugin-import": "^2.29.1",
+    "mocha": "^10.3.0",
+    "typescript": "^5.3.3"
   },
   "mocha": {
     "exit": true,
@@ -135,7 +134,15 @@
   "type": "module",
   "clean-package": {
     "remove": [
-      "release", "c8", "mocha", "devDependencies", "eslintIgnore", "eslintConfig", "babel", "scripts", "clean-package"
+      "release",
+      "c8",
+      "mocha",
+      "devDependencies",
+      "eslintIgnore",
+      "eslintConfig",
+      "babel",
+      "scripts",
+      "clean-package"
     ]
   }
 }
