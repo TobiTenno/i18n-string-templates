@@ -14,6 +14,15 @@ updates:
     pull-request-branch-name:
       separator: "-"
     rebase-strategy: "auto"
+    groups:
+      babel:
+        patterns:
+          - '@babel/*'
+          - lint-staged
+      eslint:
+        patterns:
+          - eslint*
+          - prettier
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
