@@ -103,7 +103,7 @@
     "@babel/plugin-transform-class-properties": "^7.23.3",
     "@babel/plugin-transform-private-methods": "^7.23.3",
     "@babel/preset-env": "^7.23.9",
-    "c8": "^9.1.0",
+    "c8": "^10.1.2",
     "chai": "^5.0.0",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
