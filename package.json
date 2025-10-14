@@ -144,5 +144,6 @@
       "scripts",
       "clean-package"
     ]
-  }
+  },
+  "publishConfig": { "provenance": true }
 }
