@@ -39,6 +39,8 @@ babel.config.json
 .eslintrc.json
 .mocharc.json
 .c8rc.json
+.releaserc.yaml
+.nvmrc
 
 # Tests
 src/test/
