@@ -11,7 +11,7 @@ becoming a standalone more out of a desire to not reproduce code as much as poss
 This module is a PureESM package,   
 desiring to stay as current as possible in addition to maintaining maximum coverage & code exercise.
 
-This is an implementation and refactor of [this](https://jaysoo.ca/2014/03/20/i18n-with-es2015-template-literals/) project.s
+This is an implementation and refactor of [this](https://jaysoo.ca/2014/03/20/i18n-with-es2015-template-literals/) project.
 
 ## Usage
 
