@@ -15,7 +15,7 @@
     "coverage": "npm test && c8 report --reporter=text-lcov | npx coveralls",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
-    "prepublishOnly": "npm run build:types; npm_config_yes=true npx clean-package",
+    "prepublishOnly": "npm run build:types",
     "test": "c8 mocha"
   },
   "repository": {
@@ -32,71 +32,6 @@
     "url": "https://github.com/TobiTenno/i18n-string-templates/issues"
   },
   "homepage": "https://github.com/TobiTenno/i18n-string-templates#readme",
-  "eslintIgnore": [],
-  "eslintConfig": {
-    "extends": "airbnb-base",
-    "parser": "@babel/eslint-parser",
-    "parserOptions": {
-      "sourceType": "module"
-    },
-    "rules": {
-      "valid-jsdoc": [
-        "error",
-        {
-          "requireReturn": false,
-          "requireReturnDescription": false,
-          "preferType": {
-            "String": "string",
-            "Number": "number",
-            "Boolean": "boolean",
-            "Function": "function",
-            "object": "Object",
-            "date": "Date",
-            "error": "Error"
-          },
-          "prefer": {
-            "return": "returns"
-          }
-        }
-      ],
-      "strict": [
-        "error",
-        "safe"
-      ],
-      "linebreak-style": "off",
-      "no-restricted-syntax": [
-        "off"
-      ],
-      "no-await-in-loop": "off",
-      "import/no-unresolved": 0,
-      "no-useless-escape": 0,
-      "func-names": 0,
-      "arrow-parens": [
-        2,
-        "as-needed",
-        {
-          "requireForBlockBody": true
-        }
-      ],
-      "global-require": 0,
-      "no-param-reassign": "off",
-      "no-continue": "off",
-      "lines-between-class-members": "off",
-      "no-fallthrough": "off",
-      "no-case-declarations": "off",
-      "default-case": "off",
-      "max-classes-per-file": "off"
-    }
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ],
-    "plugins": [
-      "@babel/plugin-transform-class-properties",
-      "@babel/plugin-transform-private-methods"
-    ]
-  },
   "devDependencies": {
     "@babel/core": "^7.23.9",
     "@babel/eslint-parser": "^7.23.10",
@@ -111,39 +46,9 @@
     "mocha": "^11.0.1",
     "typescript": "^5.3.3"
   },
-  "mocha": {
-    "exit": true,
-    "spec": "src/test/**/*.spec.js"
-  },
-  "c8": {
-    "reporter": [
-      "lcov",
-      "text"
-    ],
-    "include": [
-      "src/index.js"
-    ],
-    "all": true
-  },
-  "release": {
-    "branch": "main"
-  },
   "engines": {
     "node": ">=18.19.0"
   },
   "type": "module",
-  "clean-package": {
-    "remove": [
-      "release",
-      "c8",
-      "mocha",
-      "devDependencies",
-      "eslintIgnore",
-      "eslintConfig",
-      "babel",
-      "scripts",
-      "clean-package"
-    ]
-  },
   "publishConfig": { "provenance": true }
 }

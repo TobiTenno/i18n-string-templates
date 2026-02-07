@@ -1,0 +1,4 @@
+{
+  "exit": true,
+  "spec": "src/test/**/*.spec.js"
+}

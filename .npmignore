@@ -32,8 +32,16 @@ build/Release
 # Compiled docs
 docs/
 
+# Tool configs
 .github/
+tsconfig.declaration.json
+babel.config.json
+.eslintrc.json
+.mocharc.json
+.c8rc.json
+
+# Tests
 src/test/
 .gitattributes
-tsconfig.declaration.json
 package.json.backup
+
