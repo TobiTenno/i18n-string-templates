@@ -13,8 +13,8 @@
   "scripts": {
     "build:types": "tsc -p tsconfig.declaration.json",
     "coverage": "npm test && c8 report --reporter=text-lcov | npx coveralls",
-    "lint": "eslint src/",
-    "lint:fix": "eslint src/ --fix",
+    "lint": "eslint --format=pretty src/",
+    "lint:fix": "eslint --format=pretty src/ --fix",
     "prepublishOnly": "npm run build:types",
     "test": "c8 mocha"
   },
@@ -33,16 +33,12 @@
   },
   "homepage": "https://github.com/TobiTenno/i18n-string-templates#readme",
   "devDependencies": {
-    "@babel/core": "^7.23.9",
-    "@babel/eslint-parser": "^7.23.10",
-    "@babel/plugin-transform-class-properties": "^7.23.3",
-    "@babel/plugin-transform-private-methods": "^7.23.3",
-    "@babel/preset-env": "^7.23.9",
     "c8": "^10.1.2",
     "chai": "^6.0.1",
-    "eslint": "^8.57.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.29.1",
+    "eslint": "^10.0.0",
+    "eslint-formatter-pretty": "^7.0.0",
+    "eslint-plugin-unicorn": "^62.0.0",
+    "globals": "^17.3.0",
     "mocha": "^11.0.1",
     "typescript": "^5.3.3"
   },
@@ -50,5 +46,7 @@
     "node": ">=18.19.0"
   },
   "type": "module",
-  "publishConfig": { "provenance": true }
+  "publishConfig": {
+    "provenance": true
+  }
 }

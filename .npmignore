@@ -36,11 +36,11 @@ docs/
 .github/
 tsconfig.declaration.json
 babel.config.json
-.eslintrc.json
 .mocharc.json
 .c8rc.json
 .releaserc.yaml
 .nvmrc
+eslint.config.mjs
 
 # Tests
 src/test/

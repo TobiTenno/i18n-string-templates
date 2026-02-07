@@ -32,12 +32,12 @@
  * @type {RegExp}
  */
 const typeInfoRegex = /^:([a-z])(\((.+)\))?/;
+const stripType = s => s.replace(typeInfoRegex, '');
+
 // e.g. I18n._buildKey(['', ' has ', ':c in the']) == '{0} has {1} in the bank'
 const buildKey = (strings) => {
-  const stripType = s => s.replace(typeInfoRegex, '');
-  const lastPartialKey = stripType(strings[strings.length - 1]);
-  const prependPartialKey = (memo, curr, i) => `${stripType(curr)}{${i}}${memo}`;
-
+  const lastPartialKey = stripType(strings.at(-1));
+  const prependPartialKey = (memo, current, index) => `${stripType(current)}{${index}}${memo}`;
   return strings.slice(0, -1).reduceRight(prependPartialKey, lastPartialKey);
 };
 // e.g. I18n._formatStrings('{0} {1}!', 'hello', 'world') == 'hello world!'
@@ -50,6 +50,8 @@ const extractTypeInfo = (str) => {
   }
   return { type: 's', options: '' };
 };
+
+const defaultProps = { warnings: { untranslated: {} } };
 
 /**
  * Implementation and refactor of https://jaysoo.ca/2014/03/20/i18n-with-es2015-template-literals/
@@ -90,8 +92,8 @@ class I18n {
    * @param {I18nWarnings} warnings warnings storage object
    */
   constructor(locales, locale, { warnings = { untranslated: {} } }
-  = { warnings: { untranslated: {} } }) {
-    if (!Object.keys(locales || {}).length) throw new TypeError('locales is required');
+  = defaultProps) {
+    if (Object.keys(locales || {}).length === 0) throw new TypeError('locales is required');
     this.#locales = locales;
     this.#locale = locale;
     this.#bundle = this.#locales[this.#locale];
