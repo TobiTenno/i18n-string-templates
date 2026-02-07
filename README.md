@@ -1,5 +1,10 @@
 # i18n-string-templates
 
+[![Actions](https://github.com/TobiTenno/i18n-string-templates/actions/workflows/release.yaml/badge.svg)](https://github.com/TobiTenno/i18n-string-templates/actions/workflows/release.yaml)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![Coverage Status](https://coveralls.io/repos/github/TobiTenno/i18n-string-templates/badge.svg?branch=main)](https://coveralls.io/github/TobiTenno/i18n-string-templates?branch=main)
+[![npm version](https://badge.fury.io/js/i18n-string-templates.svg)](https://badge.fury.io/js/i18n-string-templates)
+
 This package started as a module in several projects,   
 becoming a standalone more out of a desire to not reproduce code as much as possible!
 
@@ -82,9 +87,3 @@ We include a rudimentary "type" forcing syntax for forcing a type on a template 
 - Node 14+
 - You're using a Pure ESM package. You cannot `require()` this package.
 
-## Super awesome badges
-
-[![Actions](https://github.com/TobiTenno/i18n-string-templates/actions/workflows/ci.yaml/badge.svg)](https://github.com/TobiTenno/i18n-string-templates/actions/workflows/ci.yaml)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
-[![Coverage Status](https://coveralls.io/repos/github/TobiTenno/i18n-string-templates/badge.svg?branch=main)](https://coveralls.io/github/TobiTenno/i18n-string-templates?branch=main)
-[![npm version](https://badge.fury.io/js/i18n-string-templates.svg)](https://badge.fury.io/js/i18n-string-templates)
