@@ -91,6 +91,12 @@ jobs:
           printf '%s\n' "$SIGNING_KEY" > "$KEY"
           chmod 600 "$KEY"
           ssh-keygen -y -f "$KEY" > "${KEY}.pub"
+          eval "$(ssh-agent -s)"
+          ssh-add "$KEY"
+          echo "SSH_AUTH_SOCK=$SSH_AUTH_SOCK" >> "$GITHUB_ENV"
+          echo "SSH_AGENT_PID=$SSH_AGENT_PID" >> "$GITHUB_ENV"
+          mkdir -p ~/.ssh
+          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts
           git config --local gpg.format ssh
           git config --local user.signingkey "${KEY}.pub"
           git config --local commit.gpgsign true
@@ -101,9 +107,11 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
+          registry-url: https://registry.npmjs.org
       - run: npm ci
-      - run: npm run build
       - name: Semantic Release
-        run: npx -p semantic-release -p @semantic-release/changelog -p @semantic-release/exec -p @semantic-release/git semantic-release
+        run: >-
+          npx -p semantic-release -p @semantic-release/changelog -p @semantic-release/exec
+          -p @semantic-release/git semantic-release --debug
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

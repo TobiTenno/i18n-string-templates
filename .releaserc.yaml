@@ -7,7 +7,6 @@ plugins:
   - '@semantic-release/npm'
   - - '@semantic-release/exec'
     - prepareCmd: 'npm run build'
-  - '@semantic-release/github'
   - - '@semantic-release/git'
     - assets:
         - CHANGELOG.md
@@ -17,4 +16,5 @@ plugins:
         - dist/index.js.map
         - types/index.d.ts
         - types/types.d.ts
-      message: 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}'
+      message: "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+  - '@semantic-release/github'
