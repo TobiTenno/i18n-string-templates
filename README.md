@@ -11,6 +11,9 @@ becoming a standalone more out of a desire to not reproduce code as much as poss
 This module is a PureESM package,   
 desiring to stay as current as possible in addition to maintaining maximum coverage & code exercise.
 
+Published artifacts are built from `src/` into minified `dist/` with TypeScript declarations in `types/`.
+Run `npm run build` before testing or publishing locally.
+
 This is an implementation and refactor of [this](https://jaysoo.ca/2014/03/20/i18n-with-es2015-template-literals/) project.
 
 ## Usage
@@ -84,6 +87,6 @@ We include a rudimentary "type" forcing syntax for forcing a type on a template 
 
 ## Requirements
 
-- Node 14+
+- Node 18.19+
 - You're using a Pure ESM package. You cannot `require()` this package.
 

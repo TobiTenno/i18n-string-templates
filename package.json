@@ -2,20 +2,32 @@
   "name": "i18n-string-templates",
   "version": "0.0.0-dev",
   "description": "Simple i18n handler using string templates and JSON.",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "types": "types/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "types",
+    "README.md",
+    "LICENSE"
+  ],
   "exports": {
     ".": {
-      "import": "./src/index.js",
+      "import": "./dist/index.js",
       "types": "./types/index.d.ts"
     }
   },
   "scripts": {
+    "build": "npm run clean && npm run build:types && npm run build:js",
+    "build:js": "node esbuild.config.mjs",
     "build:types": "tsc -p tsconfig.declaration.json",
+    "clean": "node --input-type=module -e \"import fs from 'node:fs'; for (const d of ['dist', 'types']) fs.rmSync(d, { recursive: true, force: true });\"",
     "coverage": "npm test && c8 report --reporter=text-lcov | npx coveralls",
     "lint": "eslint --format=pretty src/",
     "lint:fix": "eslint --format=pretty src/ --fix",
-    "prepublishOnly": "npm run build:types",
+    "prepublishOnly": "npm run build",
+    "pretest": "npm run build",
+    "release": "semantic-release",
     "test": "c8 mocha"
   },
   "repository": {
@@ -33,13 +45,18 @@
   },
   "homepage": "https://github.com/TobiTenno/i18n-string-templates#readme",
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "c8": "^11.0.0",
     "chai": "^6.0.1",
+    "esbuild": "^0.25.0",
     "eslint": "^10.0.0",
     "eslint-formatter-pretty": "^7.0.0",
     "eslint-plugin-unicorn": "^64.0.0",
     "globals": "^17.3.0",
     "mocha": "^11.0.1",
+    "semantic-release": "^24.2.0",
     "typescript": "^6.0.2"
   },
   "engines": {

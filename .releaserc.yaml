@@ -1,1 +1,19 @@
 branches: main
+plugins:
+  - '@semantic-release/commit-analyzer'
+  - '@semantic-release/release-notes-generator'
+  - '@semantic-release/changelog'
+  - '@semantic-release/npm'
+  - - '@semantic-release/exec'
+    - prepareCmd: 'npm run build'
+  - '@semantic-release/github'
+  - - '@semantic-release/git'
+    - assets:
+        - CHANGELOG.md
+        - package.json
+        - package-lock.json
+        - dist/index.js
+        - dist/index.js.map
+        - types/index.d.ts
+        - types/types.d.ts
+      message: 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}'

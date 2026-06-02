@@ -1,6 +1,6 @@
 import * as chai from 'chai';
 
-import use from 'i18n-string-templates';
+import use from '../index.js';
 
 chai.should();
 
@@ -55,6 +55,23 @@ describe('use', () => {
 
       Object.keys(warnings.untranslated).length.should.eq(2);
       warnings.untranslated['non-extant'].should.eq('non-extant');
+    });
+    it('should preserve leading :emoji: shortcodes in static template text', () => {
+      (i18n`:red_tick: Failed to obtain data, sorry`).should.eq(':red_tick: Failed to obtain data, sorry');
+    });
+    it('should still strip type suffixes after interpolations', () => {
+      (i18n`value is ${20.083}:n(3) units`).should.eq('value is 20.083 units');
+    });
+    it('should replace placeholders with two or more digits', () => {
+      const many = use(
+        {
+          en: {
+            '{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}': 'slot-{10}',
+          },
+        },
+        'en'
+      );
+      (many`${0}${1}${2}${3}${4}${5}${6}${7}${8}${9}${10}`).should.eq('slot-10');
     });
   });
 });

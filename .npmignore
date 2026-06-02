@@ -35,6 +35,7 @@ docs/
 # Tool configs
 .github/
 tsconfig.declaration.json
+esbuild.config.mjs
 babel.config.json
 .mocharc.json
 .c8rc.json
@@ -43,7 +44,9 @@ babel.config.json
 eslint.config.mjs
 
 # Tests
+src/
 src/test/
+.idea/
 .gitattributes
 package.json.backup
 

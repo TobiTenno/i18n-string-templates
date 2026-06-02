@@ -1,16 +1,13 @@
 {
-  "include": [ "src/index.js" ],
-  "exclude": [
-    "test/**/*.*",
-    "types/**/*.*",
-    "coverage/**/*.*"
-  ],
+  "include": ["src/index.js", "src/types.js"],
+  "exclude": ["src/test/**/*", "types/**/*", "coverage/**/*"],
   "compilerOptions": {
+    "rootDir": "./src",
     "outDir": "./types",
     "declaration": true,
     "noEmit": false,
     "allowJs": true,
     "emitDeclarationOnly": true,
-    "lib": ["es6"]
+    "lib": ["es2022"]
   }
 }

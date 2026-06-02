@@ -8,6 +8,12 @@ export default [
       'unicorn/prevent-abbreviations': 'off',
       'unicorn/no-array-callback-reference': 'off',
       'unicorn/prefer-string-replace-all': 'off',
-    }
-  }
+    },
+  },
+  {
+    files: ['src/types.js'],
+    rules: {
+      'unicorn/require-module-specifiers': 'off',
+    },
+  },
 ];
