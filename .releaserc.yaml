@@ -1,3 +1,4 @@
+repositoryUrl: git@github.com:TobiTenno/i18n-string-templates.git
 branches: main
 plugins:
   - '@semantic-release/commit-analyzer'
