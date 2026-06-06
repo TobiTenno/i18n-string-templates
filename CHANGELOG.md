@@ -1,3 +1,10 @@
+## [2.0.7](https://github.com/TobiTenno/i18n-string-templates/compare/v2.0.6...v2.0.7) (2026-06-06)
+
+
+### Bug Fixes
+
+* **build:** bump esbuild from 0.25.12 to 0.28.0 ([#375](https://github.com/TobiTenno/i18n-string-templates/issues/375)) ([8585de0](https://github.com/TobiTenno/i18n-string-templates/commit/8585de0853239c2446ebf48469986e490b9b6020))
+
 ## [2.0.6](https://github.com/TobiTenno/i18n-string-templates/compare/v2.0.5...v2.0.6) (2026-06-02)
 
 
