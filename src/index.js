@@ -11,10 +11,10 @@ const buildKey = (strings) => {
   return strings.slice(0, -1).reduceRight(prependPartialKey, lastPartialKey);
 };
 
-const buildMessage = (str, ...values) => str.replace(/{(\d+)}/g, (_, index) => values[Number(index)]);
+const buildMessage = (string_, ...values) => string_.replace(/{(\d+)}/g, (_, index) => values[Number(index)]);
 
-const extractTypeInfo = (str) => {
-  const match = typeInfoRegex.exec(str);
+const extractTypeInfo = (string_) => {
+  const match = typeInfoRegex.exec(string_);
   if (match) {
     return { type: match[1], options: match[3] };
   }
@@ -50,21 +50,21 @@ class I18n {
     };
   }
 
+  #localize(value, { type, options }) {
+    return this.#localizers[type](value, options);
+  }
+
   translate(strings, ...values) {
     const translationKey = buildKey(strings);
     const translationString = this.#bundle[translationKey];
 
     if (translationString) {
       const typeInfoForValues = strings.slice(1).map(extractTypeInfo);
-      const localizedValues = values.map((v, i) => this.#localize(v, typeInfoForValues[i]));
+      const localizedValues = values.map((v, index) => this.#localize(v, typeInfoForValues[index]));
       return buildMessage(translationString, ...localizedValues);
     }
     this.#warnings.untranslated[translationKey] = translationKey;
     return buildMessage(translationKey, ...values);
-  }
-
-  #localize(value, { type, options }) {
-    return this.#localizers[type](value, options);
   }
 }
 
