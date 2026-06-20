@@ -1,3 +1,10 @@
+## [2.0.8](https://github.com/TobiTenno/i18n-string-templates/compare/v2.0.7...v2.0.8) (2026-06-20)
+
+
+### Bug Fixes
+
+* **sec:** dependency bumps ([da36fd3](https://github.com/TobiTenno/i18n-string-templates/commit/da36fd365a1ae73f41ca7a884d635329bff8014f))
+
 ## [2.0.7](https://github.com/TobiTenno/i18n-string-templates/compare/v2.0.6...v2.0.7) (2026-06-06)
 
 
