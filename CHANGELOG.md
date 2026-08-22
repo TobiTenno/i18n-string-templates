@@ -1,3 +1,10 @@
+## [2.0.9](https://github.com/TobiTenno/i18n-string-templates/compare/v2.0.8...v2.0.9) (2026-08-22)
+
+
+### Bug Fixes
+
+* bump brace-expansion from 2.1.1 to 2.1.4 ([#402](https://github.com/TobiTenno/i18n-string-templates/issues/402)) ([8d4fe58](https://github.com/TobiTenno/i18n-string-templates/commit/8d4fe5830ecb54b3fd3d2404ecbe7953a247564e))
+
 ## [2.0.8](https://github.com/TobiTenno/i18n-string-templates/compare/v2.0.7...v2.0.8) (2026-06-20)
 
 

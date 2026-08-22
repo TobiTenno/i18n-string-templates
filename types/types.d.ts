@@ -1,34 +1,42 @@
 /**
- * locale identifier, typically following ISO 639-1
+ * @typedef {string} Locale locale identifier, typically following ISO 639-1
  */
-export type Locale = string;
 /**
- * key for the matching pair, following the format of
+ * Key for an I18n matching pair
+ * @typedef {string} I18nPairKey key for the matching pair, following the format of
  *  {x} for replacers, x being the index in the string
  *  {x}:s to force the replaced token to be treated as a string
  *  {x}:n to force the replaced token to be treated as a number
  */
-export type I18nPairKey = string;
 /**
  * Locale for use with all translations in a bundle
+ * @typedef {Record<string, string>} I18nPairs
  */
-export type I18nPairs = Record<string, string>;
 /**
  * Bundle of all locale values
+ * @typedef {Record<Locale, I18nPairs>} I18nBundle
  */
-export type I18nBundle = Record<Locale, I18nPairs>;
 /**
  * Warnings list for i18ns
+ * @typedef {Object} I18nWarnings
+ * @property {I18nPairs} untranslated object map of strings that are untranslated
  */
+/**
+ * Options object for the I18n constructor
+ * @typedef {Object} I18nOptions
+ * @property {I18nWarnings} [warnings]
+ */
+export type Locale = string;
+export type I18nPairKey = string;
+export type I18nPairs = Record<string, string>;
+export type I18nBundle = Record<Locale, I18nPairs>;
 export type I18nWarnings = {
     /**
      * object map of strings that are untranslated
      */
     untranslated: I18nPairs;
 };
-/**
- * Options object for the I18n constructor
- */
 export type I18nOptions = {
-    warnings?: I18nWarnings | undefined;
+    warnings?: I18nWarnings;
 };
+export {};
