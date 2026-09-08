@@ -55,7 +55,10 @@
     "typescript": "^7.0.2"
   },
   "engines": {
-    "node": ">=18.19.0"
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "overrides": {
+    "yargs": "17.7.3"
   },
   "type": "module",
   "publishConfig": {

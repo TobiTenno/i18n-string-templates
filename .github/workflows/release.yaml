@@ -31,7 +31,8 @@ jobs:
     needs: lint
     strategy:
       matrix:
-        node-version: ['lts/hydrogen', 'lts/iron', 'lts/*']
+        # mocha@12 engines: ^20.19.0 || >=22.12.0 (no Node 18 / hydrogen)
+        node-version: ['lts/iron', 'lts/jod', 'lts/*']
     steps:
       - uses: actions/checkout@v7
       - name: Use Node.js ${{ matrix.node-version }}
