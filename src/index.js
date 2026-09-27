@@ -15,10 +15,7 @@ const buildMessage = (string_, ...values) => string_.replace(/{(\d+)}/g, (_, ind
 
 const extractTypeInfo = (string_) => {
   const match = typeInfoRegex.exec(string_);
-  if (match) {
-    return { type: match[1], options: match[3] };
-  }
-  return { type: 's', options: '' };
+  return match ? { type: match[1], options: match[3] } : { type: 's', options: '' };
 };
 
 const defaultProps = { warnings: { untranslated: {} } };
