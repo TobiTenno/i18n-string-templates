@@ -66,11 +66,11 @@ class I18n {
 }
 
 /**
- * @param {import('./types.js').I18nBundle} locales locale mapping bundle
- * @param {import('./types.js').Locale} [locale] locale to use, defaults to 'en'
- * @param {import('./types.js').I18nOptions} [options] additional options
- * @returns {function(Array<string>, ...any): string} tagged template literal function
- */
+@param {import('./types.js').I18nBundle} locales locale mapping bundle
+@param {import('./types.js').Locale} [locale] locale to use, defaults to 'en'
+@param {import('./types.js').I18nOptions} [options] additional options
+@returns {function(Array<string>, ...any): string} tagged template literal function
+*/
 export default function use(locales, locale = 'en', options = {}) {
   const i18n = new I18n(locales, locale, options);
   return i18n.translate.bind(i18n);
