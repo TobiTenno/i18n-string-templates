@@ -1,3 +1,10 @@
+## [2.0.10](https://github.com/TobiTenno/i18n-string-templates/compare/v2.0.9...v2.0.10) (2026-10-25)
+
+
+### Bug Fixes
+
+* **sec:** bump serialize-javascript from 7.1.2 to 7.1.4 ([#427](https://github.com/TobiTenno/i18n-string-templates/issues/427)) ([f69a16d](https://github.com/TobiTenno/i18n-string-templates/commit/f69a16d5274d4982269c2e070c10e00832a2663d))
+
 ## [2.0.9](https://github.com/TobiTenno/i18n-string-templates/compare/v2.0.8...v2.0.9) (2026-08-22)
 
 
